@@ -1,0 +1,11 @@
+{
+  "files": {
+    "index.js": "827ae3e034dcf093d54ff43f41eeca0c3d54315375209fe030836eeb5090dad9",
+    "module.json": "7a6f2f7c089292cfbec1c9647f39e38e0d30343f5ccdec134f3661eec4ed00a9"
+  },
+  "defs": {
+    "S_PARTY_MEMBER_LIST": 7,
+    "S_PARTY_INFO": 1,
+    "S_USER_STATUS": 3
+  }
+}
