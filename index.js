@@ -23,7 +23,8 @@ module.exports = function noMoreBodyBlock(mod) {
     customSPartyInfo1.unk1 = event.unk1;
     customSPartyInfo1.unk2 = event.unk2;
     customSPartyInfo1.unk3 = event.unk3;
-    removeBodyBlock();
+    event.unk3.replace(1);
+    return true;
   }
 
   function onSPartyMemberList7(event) {
@@ -32,15 +33,18 @@ module.exports = function noMoreBodyBlock(mod) {
     customSPartyInfo1.unk3 = event.unk4;
     setMembers(event.members)
     removeBodyBlock();
+    return true;
   }
 
   function onSPartyMemberList8(event) {
     setMembers(event.members)
     removeBodyBlock();
+    return true;
   }
 
   function onSUserStatus3(event) {
     removeBodyBlock();
+    return true;
   }
 
   function mod_enable() {
