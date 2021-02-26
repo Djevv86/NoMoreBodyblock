@@ -32,33 +32,35 @@ module.exports = function noMoreBodyBlock(mod) {
     customSPartyInfo1.unk2 = event.unk3;
     customSPartyInfo1.unk3 = event.unk4;
     setMembers(event.members)
+    mod.toClient("S_PARTY_MEMBER_LIST", 7, event)
     removeBodyBlock();
-    return true;
+    return false;
   }
 
   function onSPartyMemberList8(event) {
     setMembers(event.members)
+    mod.toClient("S_PARTY_MEMBER_LIST", 8, event)
     removeBodyBlock();
-    return true;
+    return false;
   }
 
-  function onSUserStatus3(event) {
-    removeBodyBlock();
-    return true;
-  }
+//  function onSUserStatus3(event) {
+//    removeBodyBlock();
+//    return true;
+//  }
 
   function mod_enable() {
     mod.hook("S_PARTY_INFO", 1, event => onSPartyInfo1(event));
     mod.hook("S_PARTY_MEMBER_LIST", 7, event => onSPartyMemberList7(event));
     mod.hook("S_PARTY_MEMBER_LIST", 8, event => onSPartyMemberList8(event));
-    mod.hook("S_USER_STATUS", 3, event => onSUserStatus3(event));
+//    mod.hook("S_USER_STATUS", 3, event => onSUserStatus3(event));
   }
 
   function mod_disable() {
     mod.unhook("S_PARTY_INFO", 1, event => onSPartyInfo1(event));
     mod.unhook("S_PARTY_MEMBER_LIST", 7, event => onSPartyMemberList7(event));
     mod.unhook("S_PARTY_MEMBER_LIST", 8, event => onSPartyMemberList8(event));
-    mod.unhook("S_USER_STATUS", 3, event => onSUserStatus3(event));
+//    mod.unhook("S_USER_STATUS", 3, event => onSUserStatus3(event));
   }
 
   mod.game.on('enter_game', () => {
