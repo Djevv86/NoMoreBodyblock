@@ -1,7 +1,12 @@
 {
+  "files": {
+    "index.js": "9fc5f4bffc3fa162acbef5d0c1d27c4eced434f939062a9cf04c981833c84977",
+    "module.json": "d88c68716fbd8bcd4fd6d2212af242786c748eb1f2f52791106f961e785d42a9"
+  },
   "defs": {
     "S_PARTY_MEMBER_LIST": 7,
     "S_PARTY_INFO": 1,
-    "S_USER_STATUS": 3
+    "S_USER_STATUS": 3,
+    "S_SPAWN_USER": 16
   }
 }

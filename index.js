@@ -32,45 +32,59 @@ module.exports = function noMoreBodyBlock(mod) {
     customSPartyInfo1.unk2 = event.unk3;
     customSPartyInfo1.unk3 = event.unk4;
     setMembers(event.members)
-    mod.toClient("S_PARTY_MEMBER_LIST", 7, event)
-    removeBodyBlock();
-    return false;
+    return true;
   }
 
   function onSPartyMemberList8(event) {
     setMembers(event.members)
-    mod.toClient("S_PARTY_MEMBER_LIST", 8, event)
-    removeBodyBlock();
-    return false;
+    return true;
   }
 
-//  function onSUserStatus3(event) {
-//    removeBodyBlock();
-//    return true;
-//  }
+  function onRelated(event) {
+    removeBodyBlock();
+    return true;
+  }
 
   function mod_enable() {
     mod.hook("S_PARTY_INFO", 1, event => onSPartyInfo1(event));
     mod.hook("S_PARTY_MEMBER_LIST", 7, event => onSPartyMemberList7(event));
     mod.hook("S_PARTY_MEMBER_LIST", 8, event => onSPartyMemberList8(event));
-//    mod.hook("S_USER_STATUS", 3, event => onSUserStatus3(event));
+    mod.hook("S_USER_STATUS", 3, event => onRelated(event));
+    mod.hook("S_SPAWN_USER", 16, event => onRelated(event));
+    mod.hook("S_SPAWN_USER", 17, event => onRelated(event));
   }
 
   function mod_disable() {
     mod.unhook("S_PARTY_INFO", 1, event => onSPartyInfo1(event));
     mod.unhook("S_PARTY_MEMBER_LIST", 7, event => onSPartyMemberList7(event));
     mod.unhook("S_PARTY_MEMBER_LIST", 8, event => onSPartyMemberList8(event));
-//    mod.unhook("S_USER_STATUS", 3, event => onSUserStatus3(event));
+    mod.unhook("S_USER_STATUS", 3, event => onRelated(event));
+    mod.unhook("S_SPAWN_USER", 16, event => onRelated(event));
+    mod.unhook("S_SPAWN_USER", 17, event => onRelated(event));
   }
+
+
+  function mod_toggle() {
+    enabled = !enabled;
+    if(enabled) mod_disable;
+    else {
+      mod_enable;
+      removeBodyBlock();
+    }
+    mod.command.message("NoMore Bodyblock enabled: " + enabled);
+  }
+
+  mod.command.add('nobb', (key) => {
+    key = key ? key.toLowerCase() : key;
+	switch (key) {
+      case "refresh": case "r":
+        removeBodyBlock();
+	  default:
+	    mod_toggle();
+	}
+  });
 
   mod.game.on('enter_game', () => {
     if (enabled) mod_enable();
-  });
-
-  mod.command.add("nobb", () => {
-    enabled = !enabled;
-    if(enabled) mod_enable;
-    else mod_disable;
-    mod.command.message("NoMore Bodyblock enabled: " + enabled);
   });
 }
