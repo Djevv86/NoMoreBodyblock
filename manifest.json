@@ -1,6 +1,7 @@
 {
   "files": {
-    "index.js": "9fc5f4bffc3fa162acbef5d0c1d27c4eced434f939062a9cf04c981833c84977",
+    ".gitattributes": "3f2e00ba57549919b28e2af2eb2bb938bbf9a4afc1b66c57ab7a4e0e16656f80",
+    "index.js": "2b9312bc2e66985f2ae283544e8a7fc1e27e11e52a34e0148e3c5b9ac7a182ae",
     "module.json": "d88c68716fbd8bcd4fd6d2212af242786c748eb1f2f52791106f961e785d42a9"
   },
   "defs": {
