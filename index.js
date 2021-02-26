@@ -1,7 +1,7 @@
 module.exports = function noMoreBodyBlock(mod) {
   let enabled = true;
   const partyMembers = new Set();
-  const customSPartyInfo1 = {leader: 1n, unk1: 0, unk2: 0, unk3: 0, unk4: 1};
+  let customSPartyInfo1 = {leader: 1n, unk1: 0, unk2: 0, unk3: 0, unk4: 1};
 
   function setMembers(members) {
     partyMembers.clear();
@@ -15,6 +15,7 @@ module.exports = function noMoreBodyBlock(mod) {
     if (customSPartyInfo1.unk1 == 0) return;
     for (let i = partyMembers.values(), elem; !(elem = i.next()).done; ) {
       customSPartyInfo1.leader = elem.value;
+      console.log(customSPartyInfo1);
       mod.toClient("S_PARTY_INFO", 1, customSPartyInfo1);
     }
   }
@@ -79,8 +80,11 @@ module.exports = function noMoreBodyBlock(mod) {
 	switch (key) {
       case "refresh": case "r":
         removeBodyBlock();
+        mod.command.message("NoMore Bodyblock: Bodyblock removed");
+        break;
 	  default:
 	    mod_toggle();
+	    break;
 	}
   });
 
