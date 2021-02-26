@@ -1,2 +1,2 @@
-index.js text eol=crlf
-module.json text eol=crlf
+index.js text eol=lf
+module.json text eol=lf
