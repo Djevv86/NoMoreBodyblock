@@ -23,7 +23,7 @@ module.exports = function noMoreBodyBlock(mod) {
     customSPartyInfo1.unk1 = event.unk1;
     customSPartyInfo1.unk2 = event.unk2;
     customSPartyInfo1.unk3 = event.unk3;
-    event.unk3.replace(1);
+    event.unk3 = 1;
     return true;
   }
 
