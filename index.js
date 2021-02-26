@@ -15,15 +15,11 @@ module.exports = function noMoreBodyBlock(mod) {
     if (customSPartyInfo1.unk1 == 0) return;
     for (let i = partyMembers.values(), elem; !(elem = i.next()).done; ) {
       customSPartyInfo1.leader = elem.value;
-//      console.log(`[debug - nomorebb] removeBodyBlock()`);
-//      console.log(customSPartyInfo1);
       mod.toClient("S_PARTY_INFO", 1, customSPartyInfo1);
     }
   }
 
   function onSPartyInfo1(event) {
-//    console.log(`[debug - nomorebb] S_PARTY_INFO 1`);
-//    console.log(event);
     customSPartyInfo1.unk1 = event.unk1;
     customSPartyInfo1.unk2 = event.unk2;
     customSPartyInfo1.unk3 = event.unk3;
@@ -31,8 +27,6 @@ module.exports = function noMoreBodyBlock(mod) {
   }
 
   function onSPartyMemberList7(event) {
-//    console.log(`[debug - nomorebb] S_PARTY_MEMBER_LIST 7`);
-//    console.log(event);
     customSPartyInfo1.unk1 = event.unk2;
     customSPartyInfo1.unk2 = event.unk3;
     customSPartyInfo1.unk3 = event.unk4;
@@ -41,15 +35,11 @@ module.exports = function noMoreBodyBlock(mod) {
   }
 
   function onSPartyMemberList8(event) {
-//    console.log(`[debug - nomorebb] S_PARTY_MEMBER_LIST 8`);
-//    console.log(event);
     setMembers(event.members)
     removeBodyBlock();
   }
 
   function onSUserStatus3(event) {
-//    console.log(`[debug - nomorebb] S_USER_STATUS 3`);
-//    console.log(event);
     removeBodyBlock();
   }
 
